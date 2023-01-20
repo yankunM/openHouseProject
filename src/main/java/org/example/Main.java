@@ -1,6 +1,7 @@
 package org.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.time.LocalDateTime;
 import java.time.Instant;
@@ -12,8 +13,9 @@ import java.util.TimeZone;
 public class Main {
     public static void main(String[] args) {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
 
-//        // simulate data
+        // simulate data
         long timeStamp = 1_499_070_300L;
         LocalDateTime entime = LocalDateTime.ofInstant(Instant.ofEpochSecond(timeStamp), TimeZone.getDefault().toZoneId());
         timeStamp = 1_499_080_300L;
